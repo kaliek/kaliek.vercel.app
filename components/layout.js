@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import ThemeSwitch from './theme-switch';
 
 const name = 'Yujiao Mo';
 export const siteTitle = `Yujiao's Website`;
@@ -14,7 +15,7 @@ export default function Layout({ children, home }) {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="My website with Next.js"
         />
         <meta
           property="og:image"
@@ -25,6 +26,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <div className={styles.themeSwitch}><ThemeSwitch /></div>
       <header className={styles.header}>
         {home ? (
           <>

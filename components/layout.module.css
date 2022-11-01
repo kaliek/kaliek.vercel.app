@@ -4,6 +4,10 @@
     margin: 3rem auto 6rem;
 }
 
+.themeSwitch {
+    float: right;
+}
+
 .header {
     display: flex;
     flex-direction: column;
