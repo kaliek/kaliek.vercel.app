@@ -25,3 +25,9 @@ img {
   max-width: 100%;
   display: block;
 }
+
+#visitorName {
+  white-space: nowrap;
+  text-decoration: underline;
+  user-select: all;
+}

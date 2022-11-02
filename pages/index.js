@@ -4,6 +4,10 @@ import Layout, { siteTitle } from '../components/layout';
 import Date from '../components/date';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
+import { useEffect, useState } from 'react';
+
+const VISITOR_KEY = 'yujiao-visitor';
+const VISITOR_ID = 'visitorName';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -13,14 +17,44 @@ export async function getStaticProps() {
     }
   }
 }
+
 export default function Home({ allPostsData }) {
+  const [visitorName, setVisitorName] = useState('');
+  useEffect(() => {
+    const visitor = window.document.querySelector(`#${VISITOR_ID}`);
+    if (visitor) {
+      const saveToLocalStorage = () => {
+        const cleaned = visitor.innerHTML.match(/^[a-zA-Z0-9]+/g);
+        if (cleaned && cleaned[0] !== 'Type') {
+          localStorage.setItem(VISITOR_KEY, cleaned.join(''));
+        }
+      };
+      visitor.addEventListener('blur', saveToLocalStorage);
+      return () => visitor.removeEventListener('blur', saveToLocalStorage);
+    }
+  }, []);
+  useEffect(() => {
+    if (visitorName === '') {
+      const value = localStorage.getItem(VISITOR_KEY);
+      if (value) {
+        setVisitorName(value);
+      }
+    }
+  }, [visitorName]);
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hi, I'm Yujiao. I'm a full-time software engineer, an amateur yoga teacher and a stay-home baker.</p>
+        <p>Hello{visitorName !== '' && <span> again</span>}, <span>{visitorName}</span></p>
+        <p>I'm Yujiao. I'm a full-time software engineer, an amateur yoga teacher and a stay-home baker.</p>
+        {
+          visitorName === '' && <>
+            <p>What's your name?</p>
+            <p id={VISITOR_ID} contentEditable suppressContentEditableWarning>Type your name here...</p>
+          </>
+        }
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
