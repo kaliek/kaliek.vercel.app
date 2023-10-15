@@ -1,17 +1,35 @@
 .container {
-    max-width: 36rem;
+    max-width: 72rem;
     padding: 0 1rem;
-    margin: 3rem auto 6rem;
+    margin: 3rem auto;
 }
 
-.themeSwitch {
-    float: right;
-}
-
-.header {
+.verticalFlex {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.container img {
+    border-radius: 50%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.horizontalFlex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.description {
+    line-height: 1.5;
+    font-size: 1.5rem;
 }
 
 .backToHome {

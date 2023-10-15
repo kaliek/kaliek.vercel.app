@@ -1,209 +1,71 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Layout from '../components/layout';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
 
 export default function About() {
   return (
-    <div className="container">
+    <Layout>
       <Head>
-        <title>This is the About page</title>
+        <title>Yujiao Mo's CV</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className="title">
-            This is the About page
-        </h1>
+        <p className='description'>Frontend engineer, {Math.abs(new Date(Date.now() - new Date(2018, 7, 13)).getFullYear() - 1970)} years of experience</p>
 
-        <p className="description">
-          I am supposed to introduce myself here.
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
+        <VerticalTimeline layout={'1-column-left'} lineColor={'#666'}>
+          <VerticalTimelineElement
+            className="vertical-timeline-element--work"
+            contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff', boxShadow: 'none' }}
+            contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+            date="Sep 2021 - present"
+            iconStyle={{ background: '#fff', color: '#fff' }}
+            icon={<img src="/images/univers.jpeg" />}
           >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
+            <h3 className="vertical-timeline-element-title">Senior Software Engineer (Frontend)</h3>
+            <h4 className="vertical-timeline-element-subtitle">Univers (Envision Digital)</h4>
+            <ul>
+              <li>Build and maintain websites for carbon and energy resource management products with high customizable page layouts and embeddable widgets</li>
+              <li>Advocate of best engineering practices, provide automation solutions to engineering productivity (CI/CD workflows, Babel and EsLint plugins)</li>
+              <li>Recruit and mentor junior engineers, assist in team managment and task allocation</li>
+              <li>Prepare for open sourcing in-house React UI library</li>
+            </ul>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element--work"
+            contentStyle={{ border: '3px solid #2196f3', color: 'black', boxShadow: 'none' }}
+            date="Jul 2018 - Aug 2021"
+            iconStyle={{ background: '#fff', color: 'rgb(33, 150, 243)' }}
+            contentArrowStyle={{ borderRight: '10px solid  rgb(33, 150, 243)' }}
+            icon={<img src="/images/citi.jpeg" />}
           >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+            <h3 className="vertical-timeline-element-title">Frontend Developer</h3>
+            <h4 className="vertical-timeline-element-subtitle">Citibank N.A.</h4>
+            <ul>
+              <li>Implement the UI elements with React framework for e-trading web applications for both internal traders and external clients on Citi's flagship application Velocity</li>
+              <li>Maintain C# communication layer, and collaborate with backend team on schema changes</li>
+              <li>Implement unit tests with Jest, assist with deployments and release managements</li>
+            </ul>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            className="vertical-timeline-element--work"
+            date="2014 - 2018"
+            contentStyle={{ border: '3px solid #2196f3', color: 'black', boxShadow: 'none' }}
+            contentArrowStyle={{ borderRight: '10px solid  rgb(33, 150, 243)' }}
+            iconStyle={{ background: '#fff', color: 'rgb(33, 150, 243)' }}
+            icon={<img src="/images/uni.png" />}
+          >
+            <h3 className="vertical-timeline-element-title">Bachelor of Science</h3>
+            <h4 className="vertical-timeline-element-subtitle">National University of Singapore</h4>
+            <ul>
+              <li>Major in Business Analytics, winner of Science & Technology Scholarship</li>
+              <li>Eight-month internship as Customer Experience Analyst at Apple Inc.: derive customer satisfaction reports by analysing both quantitative and qualitative data from survey results to improve shipping  experience</li>
+              <li>Final-year project: design and build a Telegram chatbot that understands questions, provides simple factual answers, and learns from user inputs.</li>
+            </ul>
+          </VerticalTimelineElement>
+        </VerticalTimeline>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+    </Layout>
   )
 }
