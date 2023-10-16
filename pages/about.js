@@ -7,9 +7,9 @@ function TimelineElement({ date, title, company, content, iconPath }) {
   return (
     <VerticalTimelineElement
       className="vertical-timeline-element--work"
-      contentStyle={{ border: '3px solid #2196f3', color: 'black', boxShadow: 'none' }}
+      contentStyle={{ border: '3px solid rgb(33, 150, 243)',boxShadow: 'none', background: 'transparent' }}
       date={date}
-      iconStyle={{ background: '#fff', color: 'rgb(33, 150, 243)' }}
+      iconStyle={{ background: '#fff' }}
       contentArrowStyle={{ borderRight: '10px solid  rgb(33, 150, 243)' }}
       icon={<img src={iconPath} />}
     >
