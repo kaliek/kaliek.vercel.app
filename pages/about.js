@@ -27,7 +27,7 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <p className='description'>Frontend engineer, {Math.abs(new Date(Date.now() - new Date(2018, 7, 13)).getFullYear() - 1970)} years of experience</p>
+        <p className='description'>Frontend engineer who has worked primarily on React-based projects, {Math.abs(new Date(Date.now() - new Date(2018, 7, 13)).getFullYear() - 1970)} years of experience</p>
         <VerticalTimeline animate={false} layout={'1-column-left'} lineColor={'#666'}>
           <TimelineElement
             date={"Sep 2021 - present"}
@@ -35,10 +35,10 @@ export default function About() {
             company={"Univers (Envision Digital)"}
             content={
               <ul>
-                <li>Build and maintain <code>React</code> websites for carbon and energy resource management products with high customizable page layouts and embeddable widgets</li>
-                <li>Advocate of best engineering practices, provide automation solutions to engineering productivity (CI/CD workflows, <code><a href='https://github.com/kaliek/babel-plugin-test-id'>Babel</a></code> and <code><a href='https://github.com/kaliek/eslint-plugin-async-promise'>EsLint</a></code> plugins)</li>
-                <li>Recruit and mentor junior engineers, assist in cross-team collaboration, team management and task allocation by standardizing Agile workflows and documentation templates</li>
-                <li>Prepare for open sourcing in-house <code>React</code> UI library</li>
+                <li>Engineer and maintain React-based web applications for carbon and energy resource management, featuring highly customizable layouts and embeddable widgets</li>
+                <li>Champion engineering best practices by automating CI/CD workflows and building custom <a href='https://github.com/kaliek/babel-plugin-test-id'>Babel</a> and <a href='https://github.com/kaliek/eslint-plugin-async-promise'>ESLint</a> plugins to enforce coding standards</li>
+                <li>Orchestrate the recruitment and mentorship of junior engineers, conduct diligent code reviews, streamline cross-team collaboration and task allocation through standardization of Agile workflows and documentation templates</li>
+                <li>Spearhead the preparation and documentation for open-sourcing an in-house React UI library, positioning the library for public release</li>
               </ul>
             }
             iconPath={"/images/univers.jpeg"}
@@ -49,9 +49,9 @@ export default function About() {
             company={"Citibank N.A."}
             content={
               <ul>
-                <li>Implement the UI elements with <code>React</code> framework for e-trading web applications for both internal traders and external clients on Citi's flagship application Velocity</li>
-                <li>Maintain <code>C#</code> communication layer, and collaborate with backend team on schema changes</li>
-                <li>Implement unit tests with Jest, assist with deployments and release managements</li>
+                <li>Engineered sophisticated UI elements using React for Citi's flagship e-trading application, Velocity, thereby enhancing the trading experience for both internal and external clients</li>
+                <li>Developed and maintained C# and Java middle layers for WebSocket connections, facilitating seamless communication with the backend</li>
+                <li>Supported deployments and release management activities, ensuring smooth transitions and minimal service disruptions</li>
               </ul>
             }
             iconPath={"/images/citi.jpeg"}
@@ -63,8 +63,8 @@ export default function About() {
             content={
               <ul>
                 <li>Major in Business Analytics, winner of Science & Technology Scholarship</li>
-                <li>Eight-month internship as Customer Experience Analyst at Apple Inc.: derive customer satisfaction reports by analysing both quantitative and qualitative data from survey results to improve shipping experience</li>
-                <li>Final-year project: design and build a Telegram chatbot that understands questions, provides simple factual answers, and learns from user inputs.</li>
+                <li>Eight-month internship as Customer Experience Analyst at Apple Inc.: derived customer satisfaction reports by analysing both quantitative and qualitative data from survey results to improve shipping experience</li>
+                <li>Final-year project: designed and built a Telegram chatbot that understands questions, provides simple factual answers and learns from user inputs.</li>
               </ul>
             }
             iconPath={"/images/uni.png"}
