@@ -1,26 +1,23 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import Layout, { siteTitle } from '../components/layout';
-import Date from '../components/date';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
+'use client';
+
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Date from './date';
+import utilStyles from '../styles/utils.module.css';
 
 const VISITOR_KEY = 'yujiao-visitor';
 const VISITOR_ID = 'visitorName';
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
-
-export default function Home({ allPostsData }) {
+export default function BlogHome({ allPostsData }) {
   const [visitorName, setVisitorName] = useState('');
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const visitor = window.document.querySelector(`#${VISITOR_ID}`);
     if (visitor) {
       const saveToLocalStorage = () => {
@@ -32,20 +29,24 @@ export default function Home({ allPostsData }) {
       visitor.addEventListener('blur', saveToLocalStorage);
       return () => visitor.removeEventListener('blur', saveToLocalStorage);
     }
-  }, []);
+  }, [mounted]);
+
   useEffect(() => {
+    if (!mounted) return;
     if (visitorName === '') {
       const value = localStorage.getItem(VISITOR_KEY);
       if (value) {
         setVisitorName(value);
       }
     }
-  }, [visitorName]);
+  }, [visitorName, mounted]);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+    <>
       <section className={utilStyles.headingMd}>
         <p>Hello{visitorName !== '' && <span> again</span>}, <span>{visitorName}</span></p>
         <p>I'm Yujiao. I'm a full-time software engineer, an amateur yoga teacher and a stay-home baker.</p>
@@ -61,9 +62,7 @@ export default function Home({ allPostsData }) {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                {title}
-              </Link>
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
               <small className={utilStyles.lightText}>
                 <Date dateString={date} />
@@ -72,6 +71,6 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
       </section>
-    </Layout>
+    </>
   );
 }
